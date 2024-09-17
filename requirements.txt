@@ -1,8 +1,10 @@
 Flask==2.3.2
 azure-ai-documentintelligence --pre
-azure-core==1.26.4
+azure-core==1.31.0
 openai
 Flask-Session
 Pillow==9.5.0
 python-dotenv==1.0.0
 requests==2.31.0
+pdf2image
+docx2pdf
