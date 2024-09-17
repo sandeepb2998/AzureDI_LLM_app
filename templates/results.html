@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results</title>
+</head>
+<body>
+    <h1>Processing Results</h1>
+
+    {% if document_content %}
+    <h2>Document Content</h2>
+    <pre>{{ document_content }}</pre>
+    {% endif %}
+
+    <h2>Extracted Information</h2>
+    <pre>{{ extracted_json }}</pre>
+
+    {% if di_start_time %}
+    <h2>Document Intelligence Processing Times</h2>
+    <p>Document Intelligence Start: {{ di_start_time }}</p>
+    <p>Document Intelligence End: {{ di_end_time }}</p>
+    <p>Document Intelligence Duration: {{ di_duration }} seconds</p>
+    {% endif %}
+
+    <h2>LLM Processing Details</h2>
+    <ul>
+        {% if llm_start_time %}<li><strong>LLM Start Time:</strong> {{ llm_start_time }}</li>{% endif %}
+        {% if llm_end_time %}<li><strong>LLM End Time:</strong> {{ llm_end_time }}</li>{% endif %}
+        {% if llm_duration %}<li><strong>LLM Duration:</strong> {{ llm_duration }}</li>{% endif %}
+        <li><strong>Prompt Tokens:</strong> {{ prompt_tokens }}</li>
+        <li><strong>Completion Tokens:</strong> {{ completion_tokens }}</li>
+        <li><strong>Total Tokens:</strong> {{ total_tokens }}</li>
+    </ul>
+
+    <h2>Overall Process Details</h2>
+    <ul>
+        <li><strong>Total Duration:</strong> {{ total_duration }} seconds</li>
+    </ul>
+
+    <h2>Ask a Question</h2>
+    <form id="questionForm">
+        <input type="text" id="question" name="question" required>
+        <button type="submit">Ask</button>
+    </form>
+    <div id="answer"></div>
+
+    <script>
+        document.getElementById('questionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const question = document.getElementById('question').value;
+            fetch('/ask', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: 'question=' + encodeURIComponent(question)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('answer').innerHTML = '<h3>Answer:</h3><p>' + data.answer + '</p>';
+            })
+            .catch(error => console.error('Error:', error));
+        });
+    </script>
+</body>
+</html>

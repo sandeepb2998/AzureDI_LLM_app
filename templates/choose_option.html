@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Choose Processing Option</title>
+</head>
+<body>
+    <h1>Choose Processing Option</h1>
+    <form action="{{ url_for('process_file') }}" method="post">
+        <input type="radio" id="di_llm" name="option" value="di_llm" required>
+        <label for="di_llm">Document Intelligence + LLM</label><br>
+        <input type="radio" id="llm_direct" name="option" value="llm_direct">
+        <label for="llm_direct">LLM Directly</label><br>
+        <button type="submit">Process</button>
+    </form>
+</body>
+</html>

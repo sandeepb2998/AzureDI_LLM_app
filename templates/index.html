@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter Credentials</title>
+</head>
+<body>
+    <h1>Enter Your Credentials</h1>
+    <form method="post">
+        <label for="document_intelligence_endpoint">Document Intelligence Endpoint:</label>
+        <input type="text" id="document_intelligence_endpoint" name="document_intelligence_endpoint" required><br><br>
+        <label for="document_intelligence_api_key">Document Intelligence API Key:</label>
+        <input type="text" id="document_intelligence_api_key" name="document_intelligence_api_key" required><br><br>
+        <label for="openai_endpoint">OpenAI Endpoint:</label>
+        <input type="text" id="openai_endpoint" name="openai_endpoint" required placeholder="https://your-resource-name.openai.azure.com/openai/deployments/your-deployment-name/chat/completions?api-version=2024-02-15-preview"><br><br>
+        <label for="openai_api_key">OpenAI API Key:</label>
+        <input type="text" id="openai_api_key" name="openai_api_key" required><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

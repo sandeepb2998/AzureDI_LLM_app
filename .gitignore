@@ -1,0 +1,39 @@
+# Python bytecode files
+*.pyc
+__pycache__/
+
+# Ignore all Python files except appfinaltestingoptions.py
+*.py
+!document_processing_app.py
+# Environment settings
+.env
+*.env
+
+# Virtual environment folders
+venv/
+env/
+
+# PyCharm project files
+.idea/
+
+# VSCode settings
+.vscode/
+
+# MacOS system files
+.DS_Store
+
+# Logs
+*.log
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Secret keys
+*.key
+
+# Credentials and API keys
+credentials.txt
+apikey.txt
